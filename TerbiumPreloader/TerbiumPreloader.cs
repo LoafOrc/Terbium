@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using BepInEx;
 using BepInEx.Logging;
@@ -27,6 +28,9 @@ public static class TerbiumPreloader {
 		Harmony harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), MyPluginInfo.PLUGIN_GUID);
 
 		ConfigFilePatch.ApplyRemoveSaveOnBindPatch(harmony);
+		
+		Logger.LogDebug("Testing path privacy:");
+		Logger.LogDebug($"{Path.Combine(Path.GetTempPath(), "test_path")}");
 		
 		ChainloaderTimer = Stopwatch.StartNew();
 		
