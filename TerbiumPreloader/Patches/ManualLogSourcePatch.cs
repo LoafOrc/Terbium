@@ -8,7 +8,7 @@ namespace Terbium.Patches;
 
 [HarmonyPatch(typeof(ManualLogSource))]
 static class ManualLogSourcePatch {
-	[HarmonyPrefix, HarmonyPatch(nameof(ManualLogSource.Log))]
+	[HarmonyPrefix, HarmonyWrapSafe, HarmonyPatch(nameof(ManualLogSource.Log))]
 	static void HidePersonalInfoInPaths(ref object data) {
 		data = data.ToString()
 				   .Replace(Path.GetTempPath(), "%TEMP%" + Path.DirectorySeparatorChar)
