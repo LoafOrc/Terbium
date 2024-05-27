@@ -12,7 +12,7 @@ public class Terbium : BaseUnityPlugin {
 	internal static Harmony Harmony { get; set; }
 
 	private void Awake() {
-		Logger = base.Logger;
+		Logger = BepInEx.Logging.Logger.CreateLogSource(MyPluginInfo.PLUGIN_GUID);
 		Instance = this;
 
 		Logger.LogInfo("Running Harmony patches.");

@@ -5,6 +5,7 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Mono.Cecil;
+using Terbium.Patches;
 
 namespace Terbium;
 public static class TerbiumPreloader {
@@ -23,8 +24,12 @@ public static class TerbiumPreloader {
 	
 	public static void Finish() {
 		Logger.LogInfo("hewwo from the preloader! doing patches :3");
-		Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), MyPluginInfo.PLUGIN_GUID);
+		Harmony harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), MyPluginInfo.PLUGIN_GUID);
 
+		ConfigFilePatch.ApplyRemoveSaveOnBindPatch(harmony);
+		
 		ChainloaderTimer = Stopwatch.StartNew();
+		
+		Logger.LogInfo($"preloader for terbium has loaded!1!1 yipee!");
 	}
 }

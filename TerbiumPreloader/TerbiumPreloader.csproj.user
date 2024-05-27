@@ -1,0 +1,11 @@
+<Project>
+    <!-- Custom Variables -->
+    <PropertyGroup>
+        <PatcherDirectory>C:\Program Files (x86)\Steam\steamapps\common\Lethal Company\BepInEx\patchers\</PatcherDirectory>
+    </PropertyGroup>
+
+    <!-- Copy to Plugin Directory for Quicker Testing -->
+    <Target Name="CopyFiles" AfterTargets="PostBuildEvent">
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PatcherDirectory)"/>
+    </Target>
+</Project>

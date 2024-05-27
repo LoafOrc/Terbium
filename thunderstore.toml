@@ -4,7 +4,7 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "loaforc"
 name = "Terbium"
-versionNumber = "0.0.2"
+versionNumber = "0.0.3"
 description = "Improves load times by stopping configs saving too many times!"
 websiteUrl = ""
 containsNsfwContent = false
